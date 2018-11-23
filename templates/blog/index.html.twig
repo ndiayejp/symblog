@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des  articles   {% endblock %}
+ 
+
+{% block body %}
+   
+    {%  for post in posts %}
+        <article style="margin-bottom:20px;">
+            <h2>{{ post.name }}</h2>
+            <div class="metadata">
+                Ecrit le {{ post.createdAt | date('d/m/Y') }} dans la catégorie {{ post.category.name }}
+            </div>
+            <div class="content">
+                <img src="{{ post.thumbnail }}" alt="">
+                {{ post.content | raw }}
+                <a href="{{ path('post_show',{'id':post.id}) }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </article>
+   {% endfor %}
+    <div class="clearfix"></div>
+{% endblock %}

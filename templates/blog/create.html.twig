@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formPost 'bootstrap_4_layout.html.twig' %}
+
+{% block title %} Création d'un article{% endblock %}
+ 
+
+{% block body %}
+    
+    <h1>Créer un article</h1>
+    {{ form_start(formPost) }}
+    
+   
+    {{ form_row(formPost.name,{'label':"Nom de l'article",'attr':{'placeholder':"Titre de l'article"}}) }}
+    {{ form_row(formPost.category,{'label':"Categorie"}) }}
+    {{ form_row(formPost.thumbnail,{'label':"Image",'attr':{'placeholder':"Image"}}) }}
+    {{ form_row(formPost.content,{'label':"Description",'attr':{'placeholder':"Contenu"}}) }}
+    
+    <button type="submit" class="btn btn-primary">
+        {% if editMode %}
+        Enregistrer les modifications
+        {% else %}
+        Ajouter un nouvel article
+        {% endif %}
+    </button>
+    
+    {{ form_end(formPost) }}
+        
+{% endblock %}
